@@ -48,7 +48,10 @@ const Banner = () => {
                         </div><p className='pt-3'>{Truncate(movie?.overview, 250)}</p>
                     </div>
                 </Container>
-                <div className='banner_fade_bottom absolute bottom-0 left-0' />
+                <div className='absolute bottom-0 h-screen left-0' style={{
+                    backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,0.8) 100%)",
+                }} />
+                <div className='absolute bottom-0 left-0 banner_fade_bottom'></div>
             </header>}
 
             {loading && <div className='flex flex-col items-center justify-center md:h-screen'>

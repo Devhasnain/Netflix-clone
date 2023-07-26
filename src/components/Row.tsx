@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import instense from '@/core/instense';
 import Image from 'next/image';
-import Styles from '../styles/row.module.css';
 import Slider from 'react-slick';
 
 type Props = {
@@ -18,7 +17,7 @@ const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: isLargeRow ? 3 : 4,
+        slidesToShow: isLargeRow ? 5 : 6,
         slidesToScroll: 4,
         initialSlide: 0,
         arrows: false,
@@ -72,14 +71,14 @@ const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
     }, [fetchUrl]);
 
     return (
-        <div className={`text-white space-y-6 pt-8 pb-8`}>
+        <div className={`text-white space-y-4 pt-10`}>
             <h2 className='text-4xl font-semibold'>{title}</h2>
             {movie &&
                 <Slider {...settings}>
-                    {movie?.map((item: any) => {
+                    {movie?.map((item: any,index:number) => {
                         return (
-                            <div className={`flex space-x-3 rounded transition duration-300 hover:scale-[1.03] overflow-hidden ${isLargeRow ? 'h-[250px]' : 'max-h-[500px]'} pr-[10px] `} key={movie?.id}>
-                                <Image className='w-full h-full rounded' alt={''} src={`${baseURL}${isLargeRow ? item?.backdrop_path : item?.poster_path}`} height={100} width={100} />
+                            <div className={`flex space-x-3 rounded transition duration-300 hover:scale-[1.03] overflow-hidden ${isLargeRow ? 'max-h-[150px]' : 'max-h-[500px]'} pr-[10px] `} key={index}>
+                                <Image className='w-full rounded' alt={''} src={`${baseURL}${isLargeRow ? item?.backdrop_path : item?.poster_path}`} height={100} width={100} />
                             </div>
                         )
                     })}
